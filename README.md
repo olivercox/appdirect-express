@@ -1,50 +1,61 @@
 ## Synopsis
 
-AppDirect Node.js Seed is an template for integrating applications and services with the AppDirect marketplace platform.
+AppDirect-Express is an Node.js/Express module for integrating applications and
+services with the AppDirect marketplace platform.
 
 For more information on AppDirect see their website http://www.appdirect.com/.
 
 ## Motivation
 
-I was tasked with integrating an SaaS application with the AppDirect for distribution on IBM Bluemix Marketplace. The AppDirect documentation is good and improving but there wasn't much in the way of node.js examples. I decided to create this project to provide a quick start integration template for the myself and others.
+I was tasked with integrating an SaaS application with the AppDirect for
+distribution on IBM Bluemix Marketplace. The AppDirect documentation is
+good and improving but there wasn't much in the way of node.js examples.
+I decided to create this project to provide a reusable module for the myself
+and others.
 
 ## Installation
 
-Just clone the repo or download the source zip, once you have the source follow the steps below:-
+I'll be publishing to npm once the project is stable and test are created.
+Until then you can clone or download the source and copy into your project.
 
-1. Create an AppDirect application and get the OAuth credentials
-2. Create a file in the root folder named app-direct.config
-3. Add the Oauth credentials to app-direct.config (see ./sample-app-direct.config for format)
-3. Install dependancies
+## Getting Started
 
-    <pre>npm install</pre>
+Using the module is easy
 
-4. Run the app
+    // Require the module. In this case from a local source folder
+    var appDirect = require('../appdirect-express')
 
-    <pre>DEBUG=appdirect-seed* npm start</pre>
+    // Create your express app
+    var app = express();
 
-By default the api will listen on port 3000. You can use the ping tests within the AppDirect project dashboard to test out the api or hit the api with your own requests (See examples folder).
+    // Create an appDirect config object (See sample-app-direct.config)
+    var appDirectConfig = require('./app-direct.config')
+
+    // Optionally set use_mocks to true to use the built in mock controllers
+    // You'll write your own controllers but can test the initial setup with this
+    appDirectConfig.use_mocks = true;
+
+    // Create the appDirect object and pass it a middleware to express
+    app.use(appDirect(app, appDirectConfig));
 
 ## Reference
 
-The template has a pretty simple structure:-
+The module has a pretty simple structure:-
 
     root/
-      app.js - The main express application file
-      app-direct.config - Config file OAuth credentials
-      package.json
+      index.js - The main module file
+      sample-app-direct.config - Config file OAuth credentials
       api/
         api-auth.js - OAuth helpers for the api
         api-helpers.js - Helpers for the api
         api-response.js - Middleware for patching the express response object
-      bin/
-        www - Application start subscription
-      controllers/ - This is where you put your application specific integration
+      mock_controllers/ - Mock controllers for testing purposes only
         api.js - Simple api ping controllers
         addons.js - The addon endpoints controller
         subscription.js - The subscription endpoints controller
         user.js - The user management endpoints controller
-      routes/
+      oauth/
+        index.js - Module for validating and generating OAuth signatures
 
 ## Tests
 

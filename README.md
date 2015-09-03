@@ -22,21 +22,23 @@ Until then you can clone or download the source and copy into your project.
 
 Using the module is easy
 
-    // Require the module. In this case from a local source folder
-    var appDirect = require('../appdirect-express')
+``` javascript
+// Require the module. In this case from a local source folder
+var appDirect = require('../appdirect-express')
 
-    // Create your express app
-    var app = express();
+// Create your express app
+var app = express();
 
-    // Create an appDirect config object (See sample-app-direct.config)
-    var appDirectConfig = require('./app-direct.config')
+// Create an appDirect config object (See sample-app-direct.config)
+var appDirectConfig = require('./app-direct.config')
 
-    // Optionally set use_mocks to true to use the built in mock controllers
-    // You'll write your own controllers but can test the initial setup with this
-    appDirectConfig.use_mocks = true;
+// Optionally set use_mocks to true to use the built in mock controllers
+// You'll write your own controllers but can test the initial setup with this
+appDirectConfig.use_mocks = true;
 
-    // Create the appDirect object and pass it a middleware to express
-    app.use(appDirect(app, appDirectConfig));
+// Create the appDirect object and pass it a middleware to express
+app.use(appDirect(app, appDirectConfig));
+```
 
 ## Reference
 

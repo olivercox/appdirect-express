@@ -1,0 +1,16 @@
+{
+  "name": "appdirect-seed",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "crypto-js": "^3.1.5",
+    "express": "~4.12.4",
+    "js2xmlparser": "^1.0.0",
+    "request": "^2.61.0",
+    "xml2js": "^0.4.10"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "~2.3.0"
+  }
+}

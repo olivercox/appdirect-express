@@ -1,6 +1,6 @@
 /**
  * Controller methods for the base api.
- * This is not a requirement of the CF or AppDirect intergreation
+ * This is not a requirement of the AppDirect intergreation
  * Rather it is useful for checking that all is good with the API
  */
 

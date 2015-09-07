@@ -1,7 +1,10 @@
 {
   "name": "appdirect-seed",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "crypto-js": "^3.1.5",
     "express": "~4.12.4",

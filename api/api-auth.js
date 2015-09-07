@@ -19,12 +19,12 @@ function validateAuth(req, res, next) {
     if (req.oauthParams['oauth_signature_method'] == 'HMAC-SHA1') {
       var request_data = {
           url: req.protocol + '://' + req.get('Host') + req.originalUrl,
-          method: 'GET',
+          method: req.method,
           nonce: req.oauthParams['oauth_nonce'],
           timestamp: req.oauthParams['oauth_timestamp']
       };
       var authData = oauth.authorize(request_data, null);
-      if (req.oauthParams['oauth_signature'] != authData.oauth_signature) {
+      if (req.oauthParams['oauth_signature'] !== authData.oauth_signature) {
         return res.sendApiError('UNAUTHORIZED',
             'Failed OAuth HMAC-SHA1 verification')
       }

@@ -48,7 +48,6 @@ module.exports = function(req, res, next) {
     return res.sendApiResponse(res.apiSuccess(message));
   };
   res.sendApiResponse = function(data) {
-    console.log(res.headersSent);
     if(!res.headersSent) {
       res.set('Content-Type', 'application/xml');
       res.send(js2xmlparser("result", data));

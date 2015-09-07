@@ -14,7 +14,7 @@ module.exports = function(controller, config) {
   router.get('/*', function(req, res, next) {
     var result = '*** TEST *** ' + apiHelpers.getEventDescription(req.eventData)
     return res.sendApiSuccess(
-      result, res)
+      result)
   });
 
   /*
@@ -22,33 +22,33 @@ module.exports = function(controller, config) {
    */
   /* POST Create a subscription. */
   router.post('/create', function(req, res, next) {
-    controller.create(req.params.eventUrl, function(err, message) {
-        if(err) return res.sendApiError(err.errorCode, err.message, res);
-        return res.sendApiSuccess(message, res);
+    controller.create(req.params.eventUrl, function(err, result) {
+        if(err) return res.sendApiError(err.errorCode, err.message);
+        return res.sendApiResponse(result);
     });
   });
 
   /* GET home page. */
   router.post('/change', function(req, res, next) {
-    controller.change(req.params.eventUrl, function(err, message) {
-        if(err) return res.sendApiError(err.errorCode, err.message, res);
-        return res.sendApiSuccess(message, res);
+    controller.change(req.params.eventUrl, function(err, result) {
+        if(err) return res.sendApiError(err.errorCode, err.message);
+        return res.sendApiSuccess(result);
     });
   });
 
   /* GET home page. */
   router.post('/cancel', function(req, res, next) {
-    controller.create(req.params.eventUrl, function(err, message) {
-        if(err) return res.sendApiError(err.errorCode, err.message, res);
-        return res.sendApiSuccess(message, res);
+    controller.cancel(req.params.eventUrl, function(err, message) {
+        if(err) return res.sendApiError(err.errorCode, err.message);
+        return res.sendApiSuccess(message);
     });
   });
 
   /* GET home page. */
   router.post('/status', function(req, res, next) {
     controller.status(req.params.eventUrl, function(err, message) {
-        if(err) return res.sendApiError(err.errorCode, err.message, res);
-        return res.sendApiSuccess(message, res);
+        if(err) return res.sendApiError(err.errorCode, err.message);
+        return res.sendApiSuccess(message);
     });
   });
 

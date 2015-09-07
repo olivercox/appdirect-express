@@ -49,7 +49,6 @@ function getEventDescription(eventData) {
 }
 
 function getAddOnEventDescription(eventData) {
-  console.log(eventData.event);
   switch(eventData.event.type) {
     case "ADDON_ORDER": {
       return utils.format(
@@ -103,7 +102,6 @@ function getAddOnEventDescription(eventData) {
 }
 
 function getUserEventDescription(eventData) {
-  console.log(eventData.event);
   switch(eventData.event.type) {
     case "USER_ASSIGNMENT": {
       return utils.format(
@@ -140,6 +138,7 @@ function getEventData(req, res, next) {
     headers: apiAuth.getAuth(data)
   }, function (err, response, body) {
     if (!err && response.statusCode == 200) {
+
       parser.parseString(body, function (err, result) {
         req.eventData = result;
         next();

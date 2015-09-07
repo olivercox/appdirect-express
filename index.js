@@ -42,7 +42,7 @@ module.exports = function(app, options) {
   var apiAuth = ApiAuth(config);
   var apiHelpers = ApiHelpers(config);
   // Setup the api routes passing in the correct Controller
-  var baseApi = require('./routes/api.js')(controllers.api, config);
+  var baseApi = require('./routes/api.js')(controllers.apiController, config);
   /**
    * Route middleware for response helpers
    */

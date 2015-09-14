@@ -15,8 +15,11 @@ and others.
 
 ## Installation
 
-I'll be publishing to npm once the project is stable and test are created.
-Until then you can clone or download the source and copy into your project.
+Install the module as a dependency in your own project with:-
+
+    npm install appdirect-express --save
+
+Alternatively you can clone the seed template from [here](https://github.com/olivercox/appdirect-seed)
 
 ## Getting Started
 
@@ -61,7 +64,9 @@ The module has a pretty simple structure:-
 
 ## Tests
 
-Coming soon.
+Run the following command.
+
+    npm test
 
 ## Contributors
 

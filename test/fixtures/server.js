@@ -10,7 +10,7 @@ var server;
 var fixture = module.exports = {
   init: function(done) {
     app = express();
-    var appDirectConfig = require('../../sample-app-direct.config')
+    var appDirectConfig = require('../../app-direct.config')
     appDirectConfig.use_mocks = true;
     app.use(appDirect(app, appDirectConfig));
 

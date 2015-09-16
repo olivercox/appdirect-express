@@ -5,48 +5,37 @@ var ApiHelpers = require('../api/api-helpers.js');
 
 module.exports = function(controller, config) {
   var apiHelpers = ApiHelpers(config);
-  /*
-   * Mock GET endpoints for the subscription API.
-   * These are required for the ping tests in CF
-   */
-
-  /* GET Ping Create subscription */
-  router.get('/*', function(req, res, next) {
-    var result = '*** TEST *** ' + apiHelpers.getEventDescription(req.eventData)
-    return res.sendApiSuccess(
-      result)
-  });
 
   /*
-   * The real POST endpoints for subscription
+   * The endpoints for subscription
    */
-  /* POST Create a subscription. */
-  router.post('/create', function(req, res, next) {
-    controller.create(req.params.eventUrl, function(err, result) {
+  /* GET Create a subscription. */
+  router.get('/create', function(req, res, next) {
+    controller.create(req.eventData, function(err, result) {
         if(err) return res.sendApiError(err.errorCode, err.message);
         return res.sendApiResponse(result);
     });
   });
 
-  /* GET home page. */
-  router.post('/change', function(req, res, next) {
-    controller.change(req.params.eventUrl, function(err, result) {
+  /* GET Change a subscription. */
+  router.get('/change', function(req, res, next) {
+    controller.change(req.eventData, function(err, result) {
         if(err) return res.sendApiError(err.errorCode, err.message);
         return res.sendApiSuccess(result);
     });
   });
 
-  /* GET home page. */
-  router.post('/cancel', function(req, res, next) {
-    controller.cancel(req.params.eventUrl, function(err, message) {
+  /* GET Cancel a subscription. */
+  router.get('/cancel', function(req, res, next) {
+    controller.cancel(req.eventData, function(err, message) {
         if(err) return res.sendApiError(err.errorCode, err.message);
         return res.sendApiSuccess(message);
     });
   });
 
-  /* GET home page. */
-  router.post('/status', function(req, res, next) {
-    controller.status(req.params.eventUrl, function(err, message) {
+  /* GET Update status of a subscription. */
+  router.get('/status', function(req, res, next) {
+    controller.status(req.eventData, function(err, message) {
         if(err) return res.sendApiError(err.errorCode, err.message);
         return res.sendApiSuccess(message);
     });

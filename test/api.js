@@ -5,7 +5,7 @@ var parser = new xml2js.Parser({ explicitArray: false });
 var server = require('./fixtures/server.js');
 var Api = require('../routes/api.js')
 
-var appDirectConfig = require('../sample-app-direct.config')
+var appDirectConfig = require('../app-direct.config')
 appDirectConfig.use_mocks = true;
 
 var apiAuth = require('../api/api-auth.js')(appDirectConfig);

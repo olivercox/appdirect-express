@@ -5,29 +5,21 @@ var ApiHelpers = require('../api/api-helpers.js');
 
 module.exports = function(controller, config) {
   var apiHelpers = ApiHelpers(config);
+
   /*
-   * Mock GET endpoints for the subscription API.
-   * These are required for the ping tests in CF
+   * The endpoints for user
    */
-
-  /* GET Ping Create subscription */
-  router.get('/*', function(req, res, next) {
-    var result = '*** TEST *** ' + apiHelpers.getUserEventDescription(req.eventData)
-    return res.sendApiSuccess(
-      result, res)
-  });
-
-  /* GET home page. */
-  router.post('/assign', function(req, res, next) {
-    controller.assign(req.params.eventUrl, function(err, message) {
+  /* GET Assign a user. */
+  router.get('/assign', function(req, res, next) {
+    controller.assign(req.eventData, function(err, message) {
         if(err) return res.sendApiError(err.errorCode, err.message, res);
         return res.sendApiSuccess(message, res);
     });
   });
 
-  /* GET home page. */
-  router.post('/unassign', function(req, res, next) {
-    controller.unassign(req.params.eventUrl, function(err, message) {
+  /* GET Unassign a user. */
+  router.get('/unassign', function(req, res, next) {
+    controller.unassign(req.eventData, function(err, message) {
         if(err) return res.sendApiError(err.errorCode, err.message, res);
         return res.sendApiSuccess(message, res);
     });

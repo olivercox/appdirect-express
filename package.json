@@ -1,6 +1,6 @@
 {
   "name": "appdirect-express",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "keywords": "AppDirect, IBM Bluemix, CloudFoundry",
   "license": "Apache-2.0",

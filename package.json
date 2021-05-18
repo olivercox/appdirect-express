@@ -4,22 +4,22 @@
   "private": false,
   "keywords": "AppDirect, IBM Bluemix, CloudFoundry",
   "license": "Apache-2.0",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/olivercox/appdirect-express.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/olivercox/appdirect-express.git"
   },
   "scripts": {
     "test": "mocha"
   },
   "dependencies": {
     "crypto-js": "^3.1.5",
-    "express": "~4.12.4",
+    "express": "^4.17.1",
     "js2xmlparser": "^1.0.0",
     "request": "^2.61.0",
     "xml2js": "^0.4.10"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
-    "mocha": "~2.3.0"
+    "mocha": "^8.4.0"
   }
 }
